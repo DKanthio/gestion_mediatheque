@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste des CD</title>
+</head>
+<body>
+  <div>
+        <h2>Menu des bibliothécaires</h2>
+        <a href="{% url 'liste_emprunts' %}">Les emprunts</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_membres' %}">La liste des membres</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_livres' %}">La liste des livres</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_cds' %}">La liste des CD</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_dvds' %}">La liste des DVD</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_jeux' %}">La liste des jeux de plateau</a>
+    </div>
+    <h3>Liste des CD  &nbsp;|&nbsp; <a href="{% url 'ajouter_cd' %}">Ajouter un CD</a></h3>
+    <ul>
+        {% for cd in cds %}
+            <li>Nom :{{ cd.nom }} - Artiste :{{ cd.artiste }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

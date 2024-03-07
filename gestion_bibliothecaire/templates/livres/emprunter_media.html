@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprunter un média</title>
+</head>
+<body>
+ <div>
+        <h2>Menu des bibliothécaires</h2>
+        <a href="{% url 'liste_emprunts' %}">Les emprunts</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_membres' %}">La liste des membres</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_livres' %}">La liste des livres</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_cds' %}">La liste des CD</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_dvds' %}">La liste des DVD</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_jeux' %}">La liste des jeux de plateau</a>
+    </div>
+    <h3>Sélectionnez un membre et un média à emprunter</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label for="membre">Sélectionnez un membre :</label>
+        <select name="membre_id" id="membre">
+            {% for membre in membres %}
+                <option value="{{ membre.id }}">{{ membre.nom }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="media">Sélectionnez un média :</label>
+        <select name="media_id" id="media">
+            {% for item in media %}
+                <option value="{{ item.id }}">{{ item.nom }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Emprunter</button>
+    </form>
+</body>
+</html>

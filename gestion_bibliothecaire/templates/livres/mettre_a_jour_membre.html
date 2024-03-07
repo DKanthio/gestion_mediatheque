@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mettre à jour un membre</title>
+</head>
+<body>
+ <div>
+        <h2>Menu des bibliothécaires</h2>
+        <a href="{% url 'liste_emprunts' %}">Les emprunts</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_membres' %}">La liste des membres</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_livres' %}">La liste des livres</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_cds' %}">La liste des CD</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_dvds' %}">La liste des DVD</a> &nbsp;|&nbsp;
+        <a href="{% url 'liste_jeux' %}">La liste des jeux de plateau</a>
+    </div>
+    <h3>Mettre à jour un membre</h3>
+    <form method="post">
+        {% csrf_token %}
+        <label for="nouveau_nom">Nouveau nom:</label><br>
+        <input type="text" id="nouveau_nom" name="nouveau_nom" value="{{ membre.nom }}"><br>
+        <input type="submit" value="Mettre à jour">
+    </form>
+</body>
+</html>
